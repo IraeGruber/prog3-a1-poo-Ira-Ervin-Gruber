@@ -1,0 +1,26 @@
+require_once 'classes/Usuario.php';
+require_once 'classes/Autenticador.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nome = filter_input(INPUT_POST, 'nome', FILTER_SANITIZE_STRING);
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+    $senha = $_POST['senha'];
+
+    if ($nome && $email && $senha) {
+        $autenticador = new Autenticador();
+        $novoUsuario = new Usuario($nome, $email, $senha);
+        if ($autenticador->registrar($novoUsuario)) {
+            header('Location: login.php?cadastro_sucesso=1');
+            exit;
+        } else {
+            header('Location: cadastro.php?erro=email_existente');
+            exit;
+        }
+    } else {
+        header('Location: cadastro.php?erro=dados_invalidos');
+        exit;
+    }
+} else {
+    header('Location: cadastro.php');
+    exit;
+}
