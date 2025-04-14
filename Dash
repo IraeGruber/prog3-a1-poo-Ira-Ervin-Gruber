@@ -1,0 +1,25 @@
+require_once 'classes/Sessao.php';
+Sessao::iniciar();
+
+if (!Sessao::get('usuario_id')) {
+    header('Location: login.php');
+    exit;
+}
+
+$nome_usuario = Sessao::get('usuario_nome');
+$email_cookie = $_COOKIE['lembrar_email'] ?? 'Nenhum e-mail lembrado.';
+
+?>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Bem-vindo(a), <?= htmlspecialchars($nome_usuario) ?>!</h1>
+    <p>Seu e-mail (da sessão): <?= htmlspecialchars(Sessao::get('usuario_id')) ?></p>
+    <p>E-mail lembrado (do cookie): <?= htmlspecialchars($email_cookie) ?></p>
+    <p><a href="logout.php">Sair</a></p>
+</body>
+</html>
