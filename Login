@@ -1,0 +1,46 @@
+require_once 'classes/Sessao.php';
+Sessao::iniciar();
+
+$email_cookie = $_COOKIE['lembrar_email'] ?? '';
+$cadastro_sucesso = isset($_GET['cadastro_sucesso']);
+$erro_login = isset($_GET['erro']);
+
+?>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+
+    <?php if ($cadastro_sucesso): ?>
+        <p style="color: green;">Cadastro realizado com sucesso! Faça login.</p>
+    <?php endif; ?>
+
+    <?php if ($erro_login): ?>
+        <p style="color: red;">E-mail ou senha incorretos.</p>
+    <?php endif; ?>
+
+    <form action="processa_login.php" method="post">
+        <div>
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" value="<?= htmlspecialchars($email_cookie) ?>" required>
+        </div>
+        <br>
+        <div>
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" required>
+        </div>
+        <br>
+        <div>
+            <input type="checkbox" id="lembrar_email" name="lembrar_email">
+            <label for="lembrar_email">Lembrar meu e-mail</label>
+        </div>
+        <br>
+        <button type="submit">Entrar</button>
+    </form>
+    <p><a href="cadastro.php">Não possui uma conta? Cadastre-se.</a></p>
+</body>
+</html>
