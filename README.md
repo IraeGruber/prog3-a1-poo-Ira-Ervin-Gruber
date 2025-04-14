@@ -16,7 +16,7 @@ Para executar esta aplicação localmente, você precisará de um ambiente de de
    Depois de criar este repositório público no GitHub, clone-o para o seu computador utilizando o comando `git clone`
 
 3.  **Copiar os Arquivos para o Diretório Raiz do Servidor Web:**
-    Após clonar o repositório, copie todos os arquivos (as pastas `classes` e os arquivos `.php` na raiz) para o diretório raiz de documentos do seu servidor web local. A localização desse diretório varia dependendo do servidor que você está utilizando:
+    Depois de clonar o repositório, copie todos os arquivos (as pastas `classes` e os arquivos `.php` na raiz) para o diretório de documentos do seu servidor web local. A localização desse diretório varia dependendo do servidor que está utilizando:
 
 4.  **Iniciar o Servidor Web:**
 
