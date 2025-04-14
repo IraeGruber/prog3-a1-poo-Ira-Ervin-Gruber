@@ -18,8 +18,6 @@ Para executar esta aplicação localmente, você precisará de um ambiente de de
 3.  **Copiar os Arquivos para o Diretório Raiz do Servidor Web:**
     Depois de clonar o repositório, copie todos os arquivos (as pastas `classes` e os arquivos `.php` na raiz) para o diretório de documentos do seu servidor web local. A localização desse diretório varia dependendo do servidor que está utilizando:
 
-4.  **Iniciar o Servidor Web:**
+4.  **Iniciar o Servidor Web;**
 
-5.  **Acessar a Aplicação no Navegador:**
-
-6.  **Utilizando o Servidor PHP Embutido (Para Testes):**
+5.  **Acessar a Aplicação no Navegador.**
