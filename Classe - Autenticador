@@ -1,0 +1,34 @@
+class Autenticador {
+    private array $usuarios = [];
+
+    public function __construct() {
+        // Simulação de usuários pré-cadastrados
+        $this->registrar(new Usuario("João da Silva", "joao@email.com", "senha123"));
+        $this->registrar(new Usuario("Maria Souza", "maria@email.com", "senha456"));
+    }
+
+    public function registrar(Usuario $usuario): bool {
+        if ($this->buscarUsuarioPorEmail($usuario->getEmail())) {
+            return false; // E-mail já cadastrado
+        }
+        $this->usuarios[] = $usuario;
+        return true;
+    }
+
+    public function login(string $email, string $senha): ?Usuario {
+        $usuario = $this->buscarUsuarioPorEmail($email);
+        if ($usuario && $usuario->verificarSenha($senha)) {
+            return $usuario;
+        }
+        return null;
+    }
+
+    private function buscarUsuarioPorEmail(string $email): ?Usuario {
+        foreach ($this->usuarios as $usuario) {
+            if ($usuario->getEmail() === $email) {
+                return $usuario;
+            }
+        }
+        return null;
+    }
+}
